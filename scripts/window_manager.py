@@ -25,7 +25,7 @@ class GameView(arcade.View):
         super().__init__()
 
         # Background image will be stored in this variable
-        self.background = arcade.load_texture("background.jpg")
+        self.background = arcade.load_texture("resources/background.jpg")
 
         self.background_color = arcade.color.AMAZON
         self.hops = hops
