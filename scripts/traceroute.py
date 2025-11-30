@@ -1,8 +1,5 @@
 import socket
-import struct
-import time
 from scapy.all import *
-import argparse
 
 from scapy.layers.inet import IP, UDP
 
