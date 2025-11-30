@@ -1,13 +1,12 @@
-import random
 import arcade
-from pyproj import Proj
-import math
-
-PLAYER_SCALING = 0.75
-COIN_SCALING = 0.4
+from screeninfo import get_monitors
 
 WINDOW_WIDTH = 1440
 WINDOW_HEIGHT = 720
+for m in get_monitors():
+    WINDOW_WIDTH = m.width
+    WINDOW_HEIGHT = WINDOW_WIDTH//2
+
 WINDOW_TITLE = "Traceroute Visualization"
 
 def latlon_to_xy(lat, lon, width, height):

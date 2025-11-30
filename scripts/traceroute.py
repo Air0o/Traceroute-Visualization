@@ -1,12 +1,15 @@
-import socket
 from scapy.all import *
-
 from scapy.layers.inet import IP, UDP
+from colorama import Fore, Back, Style, init
+import logging
 
+logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 
-def traceroute(destination, max_hops=30, timeout=2):
+init(autoreset=False)  # enables ANSI on Windows
+print(Fore.WHITE)
+
+def traceroute(destination, max_hops=32, timeout=2):
     hops = []
-    destination_ip = socket.gethostbyname(destination)
     port = 33434
     ttl = 1
 
@@ -23,19 +26,23 @@ def traceroute(destination, max_hops=30, timeout=2):
 
         if reply is None:
             # No reply, print * for timeout
-            print(f"{ttl}\t*")
+            print(Fore.YELLOW + f"*No reply (TTL:{ttl})" + Fore.WHITE)
         elif reply.type == 3:
             # Destination reached, print the details
-            #print(f"{ttl}\t{reply.src}")
+            print(Fore.GREEN + "Destination reached!")
+            print("Drawing complete journey:" + Fore.WHITE)
             hops.append(reply.src)
             break
         else:
             # Printing the IP address of the intermediate hop
             #print(f"hop {ttl}\t{reply.src}")
             hops.append(reply.src)
+            print(f"Hop (TTL:{ttl})")
 
         ttl += 1
 
         if ttl > max_hops:
+            print(Fore.RED + "Destination NOT reached!")
+            print("Drawing successful hops:" + Fore.WHITE)
             break
     return hops

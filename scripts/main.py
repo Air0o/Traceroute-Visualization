@@ -3,7 +3,22 @@ from traceroute import traceroute
 from window_manager import start_window
 import socket
 
+examples = [
+    "google.com",
+    "cloudflare.com",
+    "1.1.1.1(Cloudflare DNS)",
+    "debian.org",
+    "ovh.com",
+    "yahoo.co.jp",
+    "baidu.com",
+    "uol.com.br",
+]
+
 print("Insert an IP address to trace")
+print("Examples: ")
+for example in examples:
+    print("-",example)
+    
 ip = str(socket.gethostbyname(str(input())))
 
 hops = traceroute(ip)

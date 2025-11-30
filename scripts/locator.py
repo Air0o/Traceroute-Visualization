@@ -8,14 +8,7 @@ def locate_ip(ip):
     response = requests.get(url)
     data = response.json()
 
-    #print("City:", data.get("city"))
-    #print("Region:", data.get("region"))
-    #print("Country:", data.get("country"))
-    #print("Location (lat,long):", data.get("loc"))
-    #print("ISP:", data.get("org"))
-
     return data
-
 
 
 def is_private(ip: str) -> bool:
