@@ -8,7 +8,7 @@ logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 init(autoreset=False)  # enables ANSI on Windows
 print(Fore.WHITE)
 
-def traceroute(destination, max_hops=32, timeout=2):
+def traceroute(destination, max_hops=30, timeout=1):
     hops = []
     port = 33434
     ttl = 1

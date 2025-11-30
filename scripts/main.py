@@ -2,6 +2,12 @@ from locator import locate_ip, print_ip_data, is_private
 from traceroute import traceroute
 from window_manager import start_window
 import socket
+import requests
+import ipaddress
+import logging
+import arcade
+import screeninfo
+import scapy
 
 examples = [
     "google.com",
