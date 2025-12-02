@@ -3,5 +3,5 @@ build/
 main.spec
 .idea/
 __pycache__/
-scripts/build/
-scripts/__pycache__/
+scripts\build/
+scripts\__pycache__/
