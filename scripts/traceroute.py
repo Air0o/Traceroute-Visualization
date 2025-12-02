@@ -5,7 +5,6 @@ import logging
 
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 
-init(autoreset=False)  # enables ANSI on Windows
 print(Fore.WHITE)
 
 def traceroute(destination, max_hops=30, timeout=1):
@@ -14,28 +13,24 @@ def traceroute(destination, max_hops=30, timeout=1):
     ttl = 1
 
     while True:
-        # Creating the IP and UDP headers
         ip_packet = IP(dst=destination, ttl=ttl)
         udp_packet = UDP(dport=port)
 
-        # Combining the headers
         packet = ip_packet / udp_packet
 
-        # Sending the packet and receive a reply
         reply = sr1(packet, timeout=timeout, verbose=0)
 
         if reply is None:
-            # No reply, print * for timeout
+            # No reply
             print(Fore.YELLOW + f"*No reply (TTL:{ttl})" + Fore.WHITE)
         elif reply.type == 3:
-            # Destination reached, print the details
+            # Destination reached
             print(Fore.GREEN + "Destination reached!")
             print("Drawing complete journey:" + Fore.WHITE)
             hops.append(reply.src)
             break
         else:
-            # Printing the IP address of the intermediate hop
-            #print(f"hop {ttl}\t{reply.src}")
+            # Printing the IP of the hop
             hops.append(reply.src)
             print(f"Hop (TTL:{ttl})")
 

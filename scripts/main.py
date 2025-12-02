@@ -8,6 +8,15 @@ import logging
 import arcade
 import screeninfo
 import scapy
+import ctypes
+from colorama import Fore, Style, init
+
+init(autoreset=False)  # enables ANSI on Windows
+
+if not ctypes.windll.shell32.IsUserAnAdmin():
+    print(Fore.RED + "You must run the program as administrator!" + Style.RESET_ALL)
+    input()
+    exit()
 
 examples = [
     "google.com",

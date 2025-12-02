@@ -19,19 +19,17 @@ def latlon_to_xy(lat, lon, width, height):
 
 class GameView(arcade.View):
     def __init__(self, hops):
-
-        # Call the parent class initializer
         super().__init__()
 
-        # Background image will be stored in this variable
         self.background = arcade.load_texture("resources/background.jpg")
 
         self.background_color = arcade.color.AMAZON
         self.hops = hops
 
-    def on_draw(self):
+    def on_resize(self, width, height):
+        super().on_resize(width, height)
 
-        # This command has to happen before we start drawing
+    def on_draw(self):
         self.clear()
 
         # Draw the background texture
@@ -60,16 +58,10 @@ class GameView(arcade.View):
 
 
 def start_window(hops):
-    """ Main function """
-    # Create a window class. This is what actually shows up on screen
-    window = arcade.Window(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)
+    window = arcade.Window(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE, resizable=True)
 
-    # Create and setup the GameView
     game = GameView(hops)
-
-    # Show GameView on screen
     window.show_view(game)
 
-    # Start the arcade game loop
     arcade.run()
 

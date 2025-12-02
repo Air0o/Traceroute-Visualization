@@ -2,7 +2,7 @@ import requests
 import ipaddress
 
 def locate_ip(ip):
-    token = "e91adaa77c8110"  # Get a free token from ipinfo.io
+    token = "e91adaa77c8110"
     url = f"https://ipinfo.io/{ip}?token={token}"
 
     response = requests.get(url)
