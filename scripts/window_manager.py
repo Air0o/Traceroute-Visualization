@@ -32,7 +32,6 @@ class GameView(arcade.View):
     def on_draw(self):
         self.clear()
 
-        # Draw the background texture
         arcade.draw_texture_rect(
             self.background,
             arcade.LBWH(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT),

@@ -5,5 +5,5 @@ An executable file can be found in the "dist" folder and must be opened as admin
 
 It might be necessary to add exceptions to the firewall or even disable it entirely.
 
-Running the script manually will require the following packages:
-arcade colorama ipaddress requests logging screeninfo scapy
+Sometimes the script never shows "Destination reached" because the target or its network don’t send replies correctly or at all.
+Reliable sites (such as google.com) may respond correctly, but others may block replies, so the trace process continues not knowing it actually reached its destination.

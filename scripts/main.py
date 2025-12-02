@@ -1,6 +1,7 @@
 from locator import locate_ip, print_ip_data, is_private
 from traceroute import traceroute
 from window_manager import start_window
+from colorama import Fore, Style, init
 import socket
 import requests
 import ipaddress
@@ -9,9 +10,8 @@ import arcade
 import screeninfo
 import scapy
 import ctypes
-from colorama import Fore, Style, init
 
-init(autoreset=False)  # enables ANSI on Windows
+init(autoreset=False)
 
 if not ctypes.windll.shell32.IsUserAnAdmin():
     print(Fore.RED + "You must run the program as administrator!" + Style.RESET_ALL)
@@ -22,6 +22,7 @@ examples = [
     "google.com",
     "cloudflare.com",
     "1.1.1.1(Cloudflare DNS)",
+    "8.8.8.8(Google DNS)",
     "debian.org",
     "ovh.com",
     "yahoo.co.jp",
