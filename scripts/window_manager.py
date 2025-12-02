@@ -48,7 +48,7 @@ class GameView(arcade.View):
 
             arcade.draw_line(x1,y1,x2,y2,arcade.color.BLUE,4)
         
-        hop = self.hops[-1]
+        hop = self.hops[len(self.hops)-1]
         x, y = latlon_to_xy(float(hop[0]), float(hop[1]), WINDOW_WIDTH, WINDOW_HEIGHT)
         arcade.draw_point(x, y, arcade.color.RED, 10)
 
