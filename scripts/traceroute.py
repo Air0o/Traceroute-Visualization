@@ -18,7 +18,7 @@ logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 conf.verb = 0
 init(autoreset=True)
 
-def traceroute(destination, max_hops=30, timeout=2, retries=2, max_consecutive_timeouts=5):
+def traceroute(destination, max_hops=30, timeout=.5, retries=1, max_consecutive_timeouts=5):
     hops = []
     port = 33434
     ttl = 1
