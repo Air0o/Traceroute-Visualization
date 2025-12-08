@@ -9,14 +9,24 @@ import logging
 import arcade
 import screeninfo
 import scapy
-import os
+import os, sys, platform, ctypes
 
+print(os.name)
 init(autoreset=False)
 
-if os.getuid() != 0:
-    print(Fore.RED + "You must run the program as administrator!" + Style.RESET_ALL)
-    input()
-    exit()
+
+if platform.system() == "Linux":
+    if os.getuid() != 0:
+        print(Fore.RED + "You must run the program as superuser!" + Style.RESET_ALL)
+        input()
+        sys.exit(1)
+
+elif os.name == "nt":  # Windows
+    if not ctypes.windll.shell32.IsUserAnAdmin():
+        print(Fore.RED + "You must run the program as administrator!" + Style.RESET_ALL)
+        input()
+        sys.exit(1)
+
 
 examples = [
     "google.com",
@@ -36,7 +46,6 @@ for example in examples:
     print("-",example)
     
 ip = str(socket.gethostbyname(str(input())))
-print(Fore.MAGENTA + f"Tracing route to {ip}" + Style.RESET_ALL)
 
 hops = traceroute(ip)
 coordinates = []
