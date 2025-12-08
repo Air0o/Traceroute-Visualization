@@ -9,11 +9,11 @@ import logging
 import arcade
 import screeninfo
 import scapy
-import ctypes
+import os
 
 init(autoreset=False)
 
-if not ctypes.windll.shell32.IsUserAnAdmin():
+if os.getuid() != 0:
     print(Fore.RED + "You must run the program as administrator!" + Style.RESET_ALL)
     input()
     exit()
