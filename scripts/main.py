@@ -36,6 +36,7 @@ for example in examples:
     print("-",example)
     
 ip = str(socket.gethostbyname(str(input())))
+print(Fore.MAGENTA + f"Tracing route to {ip}" + Style.RESET_ALL)
 
 hops = traceroute(ip)
 coordinates = []
